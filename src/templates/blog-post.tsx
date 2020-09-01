@@ -15,15 +15,16 @@ interface Props {
         };
     };
     pageContext: any;
+    location: Location;
 }
 
-const BlogPostTemplate: FC<Props> = ({ data, pageContext }: Props) => {
+const BlogPostTemplate: FC<Props> = ({ location, data, pageContext }: Props) => {
     const post = data.markdownRemark;
     const siteTitle = data.site.siteMetadata.title;
     const { previous, next } = pageContext;
 
     return (
-        <Layout location={window.location} title={siteTitle}>
+        <Layout location={location} title={siteTitle}>
             <SEO title={post.frontmatter.title} description={post.frontmatter.description || post.excerpt} />
             <h1
                 style={{

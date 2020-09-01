@@ -12,13 +12,14 @@ interface Props {
             };
         };
     };
+    location: Location;
 }
 
-const NotFoundPage: FC<Props> = ({ data }: Props) => {
+const NotFoundPage: FC<Props> = ({ location, data }: Props) => {
     const siteTitle = data.site.siteMetadata.title;
 
     return (
-        <Layout location={window.location} title={siteTitle}>
+        <Layout location={location} title={siteTitle}>
             <SEO title="404: Not Found" />
             <h1>Not Found</h1>
             <p>You just hit a route that doesn&apos;t exist... the sadness.</p>
