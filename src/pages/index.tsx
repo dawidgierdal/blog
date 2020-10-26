@@ -1,16 +1,42 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
+import { SEO } from 'components/seo';
+import { rhythm } from 'utils/typography';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import { rhythm } from '../utils/typography';
+interface SiteMetadata {
+    siteMetadata: {
+        title: string;
+    };
+}
 
-const BlogIndex = ({ data, location }) => {
-    const siteTitle = data.site.siteMetadata.title;
+interface Edge {
+    node: {
+        excerpt: string;
+        fields: {
+            slug: string;
+        };
+        frontmatter: {
+            date: Date;
+            description: string;
+            title: string;
+        };
+    };
+}
+
+interface SiteData {
+    data: {
+        site: SiteMetadata;
+        allMarkdownRemark: {
+            edges: Edge[];
+        };
+    };
+}
+
+const BlogIndex: FC<SiteData> = ({ data }: SiteData) => {
     const posts = data.allMarkdownRemark.edges;
 
     return (
-        <Layout location={location} title={siteTitle}>
+        <div>
             <SEO title="All posts" />
             {posts.map(({ node }) => {
                 const title = node.frontmatter.title || node.fields.slug;
@@ -37,7 +63,7 @@ const BlogIndex = ({ data, location }) => {
                     </article>
                 );
             })}
-        </Layout>
+        </div>
     );
 };
 

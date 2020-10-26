@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'gatsby';
 
-import { rhythm, scale } from '../utils/typography';
+import { rhythm, scale } from 'utils/typography';
 
 interface Props {
     location: Location;
@@ -9,7 +9,7 @@ interface Props {
     children: any;
 }
 
-const Layout: FC<Props> = ({ location, title, children }: Props) => {
+export const Layout: FC<Props> = ({ location, title, children }: Props) => {
     const rootPath = '/';
     let header;
 
@@ -71,5 +71,3 @@ const Layout: FC<Props> = ({ location, title, children }: Props) => {
         </div>
     );
 };
-
-export default Layout;

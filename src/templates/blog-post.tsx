@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
 import { Link, graphql } from 'gatsby';
-
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import { rhythm, scale } from '../utils/typography';
+import { SEO } from 'components/seo';
+import { rhythm, scale } from 'utils/typography';
 
 interface Props {
     data: {
@@ -15,16 +13,13 @@ interface Props {
         };
     };
     pageContext: any;
-    location: Location;
 }
 
-const BlogPostTemplate: FC<Props> = ({ location, data, pageContext }: Props) => {
+const BlogPostTemplate: FC<Props> = ({ data, pageContext }: Props) => {
     const post = data.markdownRemark;
-    const siteTitle = data.site.siteMetadata.title;
     const { previous, next } = pageContext;
-
     return (
-        <Layout location={location} title={siteTitle}>
+        <div>
             <SEO title={post.frontmatter.title} description={post.frontmatter.description || post.excerpt} />
             <h1
                 style={{
@@ -71,7 +66,7 @@ const BlogPostTemplate: FC<Props> = ({ location, data, pageContext }: Props) => 
                     )}
                 </li>
             </ul>
-        </Layout>
+        </div>
     );
 };
 

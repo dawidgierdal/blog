@@ -9,7 +9,7 @@ interface Props {
     title: string;
 }
 
-const SEO: FC<Props> = ({ description, lang, meta, title }: Props) => {
+export const SEO: FC<Props> = ({ description, lang, meta, title }: Props) => {
     const { site } = useStaticQuery(
         graphql`
             query {
@@ -73,5 +73,3 @@ const SEO: FC<Props> = ({ description, lang, meta, title }: Props) => {
         />
     );
 };
-
-export default SEO;
